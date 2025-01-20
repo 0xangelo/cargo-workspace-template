@@ -29,8 +29,6 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           if [[ -f $DOCKERFILE ]]; then
             echo "file=$DOCKERFILE" >> $GITHUB_OUTPUT
-          else
-            echo "file=''" >> $GITHUB_OUTPUT
           fi
 
   docker-image:
@@ -38,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: pkg-info
     # if: github.repository == '0xangelo/cargo-workspace-template'
-    if: ${{ needs.pkg-info.outputs.dockerfile != '' }}
+    if: ${{ needs.pkg-info.outputs.dockerfile != null }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
