@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.7](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.6...hello-world-v0.1.7) (2025-01-20)
+
+
+### Features
+
+* capitalize 'world' ([b4b7db5](https://github.com/0xangelo/cargo-workspace-template/commit/b4b7db5f9a22f79c00405d9af500060be087863f))
+
 ## [0.1.6](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.5...hello-world-v0.1.6) (2025-01-20)
 
 
