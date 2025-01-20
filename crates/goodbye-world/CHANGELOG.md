@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/0xangelo/cargo-workspace-template/compare/goodbye-world-v0.1.1...goodbye-world-v0.1.2) (2025-01-20)
+
+
+### Features
+
+* un-capitalize world ([dc2ec80](https://github.com/0xangelo/cargo-workspace-template/commit/dc2ec804b17a9d0e5e793741a667a18220702b1e))
+
 ## [0.1.1](https://github.com/0xangelo/cargo-workspace-template/compare/goodbye-world-v0.1.0...goodbye-world-v0.1.1) (2025-01-20)
 
 
