@@ -49,19 +49,12 @@ jobs:
           username: angelovtt
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ needs.pkg-info.outputs.package }}
-          tags: |
-            type=semver,pattern={{version}}
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
           context: .
           file: ${{ needs.pkg-info.outputs.dockerfile }}
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: |
+            angelovtt/${{ needs.pkg-info.outputs.package }}:${{ needs.pkg-info.outputs.version }}
+            angelovtt/${{ needs.pkg-info.outputs.package }}:latest
