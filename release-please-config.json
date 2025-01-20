@@ -1,5 +1,7 @@
 {
-  "packages": {},
+  "packages": {
+    "crates/hello-world": {}
+  },
   "plugins": ["cargo-workspace"],
   "release-type": "rust",
   "bump-minor-pre-major": true,
