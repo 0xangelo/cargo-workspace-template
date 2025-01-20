@@ -9,25 +9,21 @@ jobs:
   pkg-info:
     runs-on: ubuntu-latest
     outputs:
-      package: ${{ steps.tag_parts.package }}
-      version: ${{ steps.tag_parts.version }}
-      dockerfile: ${{ steps.dockerfile.file }}
+      package: ${{ steps.pkg_info.package }}
+      version: ${{ steps.pkg_info.version }}
+      dockerfile: ${{ steps.pkg_info.file }}
     steps:
-      - name: Get Tag Parts
-        id: tag_parts
+      - name: Get package info
+        id: pkg_info
         env:
           GITHUB_REF: ${{ github.ref }}
         run: |
           TAG=${GITHUB_REF#refs/tags/}
           PACKAGE=${TAG%-*}
           VERSION=${TAG##*-}
+          DOCKERFILE=./docker/$PACKAGE/Dockerfile
           echo "package=$PACKAGE" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-
-      - name: Find Dockerfile
-        id: dockerfile
-        run: |
-          DOCKERFILE="./docker/$PACKAGE/Dockerfile"
           if [[ -f $DOCKERFILE ]]; then
             echo "file=$DOCKERFILE" >> $GITHUB_OUTPUT
           else
