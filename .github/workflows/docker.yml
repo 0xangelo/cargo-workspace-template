@@ -9,9 +9,9 @@ jobs:
   pkg-info:
     runs-on: ubuntu-latest
     outputs:
-      package: ${{ steps.pkg_info.package }}
-      version: ${{ steps.pkg_info.version }}
-      dockerfile: ${{ steps.pkg_info.file }}
+      package: ${{ steps.pkg_info.outputs.package }}
+      version: ${{ steps.pkg_info.outputs.version }}
+      dockerfile: ${{ steps.pkg_info.outputs.file }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
