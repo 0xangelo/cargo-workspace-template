@@ -1,6 +1,7 @@
 {
   "packages": {
     "crates/hello-world": {}
+    "crates/goodbye-world": {}
   },
   "plugins": ["cargo-workspace"],
   "release-type": "rust",
