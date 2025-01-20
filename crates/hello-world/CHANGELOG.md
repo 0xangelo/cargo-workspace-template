@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.4...hello-world-v0.1.5) (2025-01-20)
+
+
+### Bug Fixes
+
+* revert 9671c6f6908b5c8b485b40cb1f98ff757ccb58ad ([582e0da](https://github.com/0xangelo/cargo-workspace-template/commit/582e0da913cb42d402c2338409157a80711b06f9))
+
 ## [0.1.4](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.3...hello-world-v0.1.4) (2025-01-20)
 
 
