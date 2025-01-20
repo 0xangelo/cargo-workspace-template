@@ -13,6 +13,9 @@ jobs:
       version: ${{ steps.pkg_info.version }}
       dockerfile: ${{ steps.pkg_info.file }}
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Get package info
         id: pkg_info
         env:
@@ -22,10 +25,10 @@ jobs:
           PACKAGE=${TAG%-*}
           VERSION=${TAG##*-}
           DOCKERFILE=./docker/$PACKAGE/Dockerfile
-          echo "package=$PACKAGE" >> $GITHUB_OUTPUT
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "package='$PACKAGE'" >> $GITHUB_OUTPUT
+          echo "version='$VERSION'" >> $GITHUB_OUTPUT
           if [[ -f $DOCKERFILE ]]; then
-            echo "file=$DOCKERFILE" >> $GITHUB_OUTPUT
+            echo "file='$DOCKERFILE'" >> $GITHUB_OUTPUT
           else
             echo "file=''" >> $GITHUB_OUTPUT
           fi
