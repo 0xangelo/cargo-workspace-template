@@ -1,0 +1,115 @@
+name: CI # Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_call:
+    inputs:
+      check-all:
+        description: Whether to run all jobs, regardless if crates were changed
+        required: true
+        type: boolean
+
+jobs:
+  # JOB to run change detection
+  changes:
+    runs-on: ubuntu-latest
+    # Required permissions
+    permissions:
+      contents: read
+      pull-requests: read
+    # Set job outputs to values from filter step
+    outputs:
+      rust: ${{ steps.filter.outputs.rust == 'true' || inputs.check-all }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          rust:
+            - 'crates/**'
+            - 'Cargo.toml'
+
+  rustfmt:
+    needs: changes
+    if: ${{ needs.changes.outputs.rust }}
+    name: Rustfmt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rustfmt
+      - name: Check formatting
+        run: cargo fmt --all --check
+
+  clippy:
+    needs: changes
+    if: ${{ needs.changes.outputs.rust }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - name: Clippy check
+        run: cargo clippy --all-targets --all-features --workspace -- -D warnings
+
+  test:
+    needs: changes
+    if: ${{ needs.changes.outputs.rust }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Run tests
+        run: cargo test --all-features --all-targets
+
+  docs:
+    needs: changes
+    if: ${{ needs.changes.outputs.rust }}
+    name: Docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@nightly
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "nightly"
+      - name: Check documentation
+        env:
+          RUSTDOCFLAGS: -A rustdoc::redundant-explicit-links -D warnings
+        run: cargo doc --no-deps --all-features --workspace --examples
+
+  readme:
+    needs: changes
+    if: ${{ needs.changes.outputs.rust }}
+    name: READMEs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "cargo-ws"
+      - name: Check if the README is up to date.
+        run: |
+          cargo install --locked cargo-workspaces
+          cargo install --locked cargo-rdme
+          cargo ws exec cargo rdme --check --intralinks-strip-links

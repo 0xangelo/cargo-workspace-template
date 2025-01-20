@@ -1,0 +1,66 @@
+name: docker
+
+on:
+  push:
+    tags:
+      - '*[v]?[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  pkg-info:
+    runs-on: ubuntu-latest
+    outputs:
+      package: ${{ steps.tag_parts.package }}
+      version: ${{ steps.tag_parts.version }}
+      dockerfile: ${{ steps.dockerfile.file }}
+    steps:
+      - name: Get Tag Parts
+        id: tag_parts
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          PACKAGE=${TAG%-*}
+          VERSION=${TAG##*-}
+          echo "package=$PACKAGE" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Find Dockerfile
+        id: dockerfile
+        run: |
+          DOCKERFILE="./docker/$PACKAGE/Dockerfile"
+          if [[ -f $DOCKERFILE ]]; then
+            echo "file=$DOCKERFILE" >> $GITHUB_OUTPUT
+          else
+            echo "file=''" >> $GITHUB_OUTPUT
+          fi
+
+  docker-image:
+    name: Build and push Docker images
+    runs-on: ubuntu-latest
+    needs: pkg-info
+    # if: github.repository == '0xangelo/cargo-workspace-template'
+    if: ${{ needs.pkg-info.outputs.dockerfile != '' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: angelovtt
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ needs.pkg-info.outputs.package }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ needs.pkg-info.outputs.dockerfile }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
