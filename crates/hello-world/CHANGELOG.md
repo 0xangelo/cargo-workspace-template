@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.9](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.8...hello-world-v0.1.9) (2025-01-21)
+
+
+### Features
+
+* **hello-world:** echo contents of a file ([7f23f69](https://github.com/0xangelo/cargo-workspace-template/commit/7f23f692b24d6499888b7076ec4325b63b807711))
+
 ## [0.1.8](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.7...hello-world-v0.1.8) (2025-01-20)
 
 
