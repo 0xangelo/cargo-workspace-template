@@ -48,6 +48,8 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build and push Docker image
+        env:
+          MY_SECRET: ${{ secrets.HELLO_WORLD_SECRET }}
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -56,3 +58,5 @@ jobs:
           tags: |
             angelovtt/${{ needs.pkg-info.outputs.package }}:${{ needs.pkg-info.outputs.version }}
             angelovtt/${{ needs.pkg-info.outputs.package }}:latest
+          secret-envs: |
+            MY_SECRET
