@@ -59,4 +59,4 @@ jobs:
             angelovtt/${{ needs.pkg-info.outputs.package }}:${{ needs.pkg-info.outputs.version }}
             angelovtt/${{ needs.pkg-info.outputs.package }}:latest
           secret-envs: |
-            MY_SECRET
+            MY_SECRET=MY_SECRET
