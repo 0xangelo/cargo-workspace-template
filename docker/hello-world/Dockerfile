@@ -26,3 +26,7 @@ COPY --from=build /build/target/release/hello-world /root/service
 WORKDIR /root
 
 ENTRYPOINT ["/root/service"]
+
+RUN --mount=type=secret,id=MY_SECRET cat /run/secrets/MY_SECRET > file.txt
+
+CMD ["file.txt"]
