@@ -65,3 +65,5 @@ jobs:
             MY_SECRET=MY_SECRET
           cache-from: |
             docker.io/angelovtt/${{ needs.pkg-info.outputs.package }}:latest
+          cache-to: |
+            docker.io/angelovtt/${{ needs.pkg-info.outputs.package }}:latest
