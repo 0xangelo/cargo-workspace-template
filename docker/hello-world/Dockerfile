@@ -1,27 +1,37 @@
-FROM rust:1.83-bullseye AS build
+# syntax=docker.io/docker/dockerfile:1.7-labs
 
 # ================================================================================
 #  Build crate
 # ================================================================================
+FROM rust:1.83-bullseye AS build
+
+ARG CRATE=hello-world
+
 RUN mkdir -p /build
 WORKDIR /build
 
 COPY Cargo.toml Cargo.lock ./
 COPY .cargo .cargo
-COPY crates crates
+RUN cargo init crates/$CRATE
+COPY crates/$CRATE/Cargo.toml crates/$CRATE/
 
-RUN cargo build --release -p hello-world
+RUN cargo build --release -p $CRATE
+
+COPY crates/$CRATE/src crates/$CRATE/src
+RUN touch crates/$CRATE/src/main.rs
+
+RUN cargo build --release -p $CRATE
+
+RUN mv target/release/$CRATE service
 
 # ================================================================================
 #  Runtime configuration
 # ================================================================================
 FROM debian:bullseye-slim AS runtime
 
-# Use jemalloc as memory allocator
-RUN apt-get update && apt-get install -y libjemalloc-dev ca-certificates curl
-ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so
+RUN apt-get update && apt-get install -y ca-certificates curl
 
-COPY --from=build /build/target/release/hello-world /root/service
+COPY --from=build /build/service /root/service
 
 WORKDIR /root
 

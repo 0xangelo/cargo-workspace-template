@@ -1,0 +1,23 @@
+name: local-test
+services:
+
+  hello-world:
+    build:
+      context: ..
+      dockerfile: ./docker/hello-world/Dockerfile
+      secrets:
+        - MY_SECRET
+    environment:
+      - RUST_BACKTRACE=1
+
+  goodbye-world:
+    build:
+      context: ..
+      dockerfile: ./docker/goodbye-world/Dockerfile
+    environment:
+      - RUST_BACKTRACE=1
+
+secrets:
+  MY_SECRET:
+    environment: MY_SECRET
+
