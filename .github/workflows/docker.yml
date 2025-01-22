@@ -60,3 +60,5 @@ jobs:
             angelovtt/${{ needs.pkg-info.outputs.package }}:latest
           secret-envs: |
             MY_SECRET=MY_SECRET
+          cache-from: |
+            type=registry,ref=angelovtt/${{ needs.pkg-info.outputs.package }}:latest
