@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/0xangelo/cargo-workspace-template/compare/goodbye-world-v0.1.2...goodbye-world-v0.1.3) (2025-01-22)
+
+
+### Features
+
+* **crates:** comments for cache invalidation tests ([84d91ef](https://github.com/0xangelo/cargo-workspace-template/commit/84d91efd6a4fce76f1e46d3c82a29d78dd960c69))
+
 ## [0.1.2](https://github.com/0xangelo/cargo-workspace-template/compare/goodbye-world-v0.1.1...goodbye-world-v0.1.2) (2025-01-20)
 
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.14](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.13...hello-world-v0.1.14) (2025-01-22)
+
+
+### Features
+
+* **crates:** comments for cache invalidation tests ([84d91ef](https://github.com/0xangelo/cargo-workspace-template/commit/84d91efd6a4fce76f1e46d3c82a29d78dd960c69))
+
 ## [0.1.13](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.12...hello-world-v0.1.13) (2025-01-22)
 
 
