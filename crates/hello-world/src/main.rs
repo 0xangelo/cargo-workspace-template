@@ -9,6 +9,8 @@ struct Cli {
     path: PathBuf,
 }
 
+/// Try cache invalidation by editing this doc comment.
+/// Edited.
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Hello, world!");
     let Cli { path } = Cli::parse();
