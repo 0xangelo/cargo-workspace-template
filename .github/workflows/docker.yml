@@ -61,4 +61,4 @@ jobs:
           secret-envs: |
             MY_SECRET=MY_SECRET
           cache-from: |
-            type=registry,ref=docker.io/angelovtt/${{ needs.pkg-info.outputs.package }}:latest
+            docker.io/angelovtt/${{ needs.pkg-info.outputs.package }}:latest
