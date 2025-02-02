@@ -58,15 +58,15 @@ jobs:
         with:
           # https://www.blacksmith.sh/blog/cache-is-king-a-guide-for-docker-layer-caching-in-github-actions
           cache-from: |-
-            type=registry,ref=ghcr.io/0xangelo/${{ matrix.target }}:buildcache
+            type=registry,ref=ghcr.io/0xangelo/${{ matrix.bin }}:buildcache
           cache-to: |-
-            type=registry,ref=ghcr.io/0xangelo/${{ matrix.target }}:buildcache,mode=max
+            type=registry,ref=ghcr.io/0xangelo/${{ matrix.bin }}:buildcache,mode=max
           context: .
           file: docker/Dockerfile
           push: true
           secret-envs: |
             MY_SECRET=MY_SECRET
           tags: |
-            ghcr.io/0xangelo/${{ matrix.target }}:${{ needs.pkg-info.outputs.version }}
-            ghcr.io/0xangelo/${{ matrix.target }}:latest
+            ghcr.io/0xangelo/${{ matrix.bin }}:${{ needs.pkg-info.outputs.version }}
+            ghcr.io/0xangelo/${{ matrix.bin }}:latest
           target: ${{ matrix.bin }}
