@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/0xangelo/cargo-workspace-template/compare/goodbye-world-v0.1.4...goodbye-world-v0.1.5) (2025-02-02)
+
+
+### Features
+
+* bump version patch ([7b415c0](https://github.com/0xangelo/cargo-workspace-template/commit/7b415c0ca2d71f24c19b05332425dabc7a8e4d12))
+
 ## [0.1.4](https://github.com/0xangelo/cargo-workspace-template/compare/goodbye-world-v0.1.3...goodbye-world-v0.1.4) (2025-02-02)
 
 
