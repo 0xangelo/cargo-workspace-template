@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.pkg_info.outputs.version }}
-      matrix: ${{ steps.pkg_info.outputs.bins }}
+      matrix: ${{ steps.pkg_info.outputs.matrix }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
