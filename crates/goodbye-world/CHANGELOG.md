@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.9](https://github.com/0xangelo/cargo-workspace-template/compare/goodbye-world-v0.1.8...goodbye-world-v0.1.9) (2025-02-02)
+
+
+### Features
+
+* add hasta-la-vista bin ([230e150](https://github.com/0xangelo/cargo-workspace-template/commit/230e15067445a2ee830739ea1570699e5f03a807))
+* Release ([90e7723](https://github.com/0xangelo/cargo-workspace-template/commit/90e772375ec75ec1fb8bc3ea47ea299e5af937bb))
+
+
+### Bug Fixes
+
+* specify `cargo rdme` entrypoint for multi-binary crate ([2798ce3](https://github.com/0xangelo/cargo-workspace-template/commit/2798ce33cf354b0eee6b9dfeeb2c2df947be9ad3))
+
 ## [0.1.8](https://github.com/0xangelo/cargo-workspace-template/compare/goodbye-world-v0.1.7...goodbye-world-v0.1.8) (2025-02-02)
 
 
