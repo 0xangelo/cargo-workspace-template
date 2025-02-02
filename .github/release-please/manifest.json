@@ -1,5 +1,5 @@
 {
-  "crates/hello-world":"0.1.21",
-  "crates/goodbye-world":"0.1.10",
-  "crates/print-this":"0.0.0"
+  "crates/hello-world": "0.1.22",
+  "crates/goodbye-world": "0.1.11",
+  "crates/print-this": "0.1.0"
 }

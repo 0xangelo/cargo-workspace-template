@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.22](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.21...hello-world-v0.1.22) (2025-02-02)
+
+
+### Features
+
+* use `print-this` ([45aaf97](https://github.com/0xangelo/cargo-workspace-template/commit/45aaf97c4762deea3727e86b0e27e8d366ef58e7))
+
 ## [0.1.21](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.20...hello-world-v0.1.21) (2025-02-02)
 
 

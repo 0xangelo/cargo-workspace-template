@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.11](https://github.com/0xangelo/cargo-workspace-template/compare/goodbye-world-v0.1.10...goodbye-world-v0.1.11) (2025-02-02)
+
+
+### Features
+
+* add bin doc ([984a8fc](https://github.com/0xangelo/cargo-workspace-template/commit/984a8fc388d39644414b6c3f431cc01c8d36467f))
+
 ## [0.1.10](https://github.com/0xangelo/cargo-workspace-template/compare/goodbye-world-v0.1.9...goodbye-world-v0.1.10) (2025-02-02)
 
 
