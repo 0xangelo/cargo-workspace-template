@@ -12,7 +12,8 @@ struct Cli {
 /// Try cache invalidation by editing this doc comment.
 /// Edited.
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    println!("Hello, world!");
+    let msg = print_this::to_string("Hello, world!");
+    println!("{msg}");
     let Cli { path } = Cli::parse();
     let text = std::fs::read_to_string(path)?;
     println!("{text}");

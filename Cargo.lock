@@ -131,6 +131,7 @@ name = "hello-world"
 version = "0.1.21"
 dependencies = [
  "clap",
+ "print-this",
 ]
 
 [[package]]

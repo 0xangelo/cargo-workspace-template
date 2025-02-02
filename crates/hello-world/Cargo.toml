@@ -5,3 +5,5 @@ version = "0.1.21"
 
 [dependencies]
 clap = { version = "4", features = ["derive"] }
+
+print-this = { path = "../print-this" }
