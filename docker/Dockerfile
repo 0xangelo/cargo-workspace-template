@@ -38,6 +38,17 @@ WORKDIR /root
 ENTRYPOINT ["/root/service"]
 
 # ================================================================================
+#  hasta-la-vista
+# ================================================================================
+FROM debian:bullseye-slim AS hasta-la-vista
+
+COPY --from=build /build/service /root/service
+
+WORKDIR /root
+
+ENTRYPOINT ["/root/service"]
+
+# ================================================================================
 #  hello-world
 # ================================================================================
 FROM debian:bullseye-slim AS hello-world

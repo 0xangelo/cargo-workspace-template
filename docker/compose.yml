@@ -27,3 +27,13 @@ services:
       target: goodbye-world
     environment:
       - RUST_BACKTRACE=1
+
+  hasta-la-vista:
+    build:
+      args:
+        BIN: hasta-la-vista
+      context: ..
+      dockerfile: ./docker/Dockerfile
+      target: hasta-la-vista
+    environment:
+      - RUST_BACKTRACE=1
