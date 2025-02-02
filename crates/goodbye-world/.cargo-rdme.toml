@@ -1,0 +1,6 @@
+[entrypoint]
+# The entrypoint type can be "lib" or "bin".
+type = "bin"
+# When you set type to "bin" the entrypoint default to `src/main.rs`.  If you have binary targets
+# specified in your cargo manifest you can select them by name with `bin-name`.
+bin-name = "goodbye-world"
