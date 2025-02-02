@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.pkg_info.outputs.version }}
-      matrix: ${{ steps.pkg_info.outputs.matrix }}
+      bins: ${{ steps.pkg_info.outputs.bins }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,15 +28,17 @@ jobs:
           VERSION=${TAG##*-v}
           BINS=$(.github/containerized_bins.sh $PACKAGE)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "matrix={\"include\": $BINS}" >> "$GITHUB_OUTPUT"
+          echo "bins=$BINS" >> "$GITHUB_OUTPUT"
 
   docker-image:
     # if: github.repository == '0xangelo/cargo-workspace-template'
+    if: ${{ needs.pkg-info.outputs.bins != '[]' }}
     name: Build and push Docker images
     runs-on: ubuntu-latest
     needs: pkg-info
     strategy:
-      matrix: ${{fromJson(needs.pkg-info.outputs.matrix)}}
+      matrix: 
+        bin: ${{ fromJson(needs.pkg-info.outputs.bins) }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
