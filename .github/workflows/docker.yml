@@ -26,17 +26,9 @@ jobs:
           TAG=${GITHUB_REF#refs/tags/}
           PACKAGE=${TAG%-*}
           VERSION=${TAG##*-}
-          function bin_list_filtered {
-            ALL=$(cargo metadata --no-deps --format-version=1 | jq -r ".packages[] | select(.name == \"$1\") | .targets[] | select(.kind == [\"bin\"]) | .name")
-            unset BINS
-            for bin in $ALL
-            do
-              grep -q "^FROM .* AS $bin\$" docker/Dockerfile && BINS="$BINS $bin"
-            done
-            echo $BINS | jq -R 'split(" ") | [.[] | select(length>0) | {bin: .}]'
-          }
+          BINS=$(.github/containerized_bins.sh $PACKAGE)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "matrix={\"include\": $(bin_list_filtered $PACKAGE)}" >> "$GITHUB_OUTPUT"
+          echo "matrix={\"include\": $BINS}" >> "$GITHUB_OUTPUT"
 
   docker-image:
     # if: github.repository == '0xangelo/cargo-workspace-template'
