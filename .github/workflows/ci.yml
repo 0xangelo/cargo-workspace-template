@@ -12,6 +12,10 @@ on:
         required: true
         type: boolean
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   # JOB to run change detection
   changes:
