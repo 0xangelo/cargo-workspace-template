@@ -8,4 +8,4 @@ for bin in $ALL
 do
   grep -q "^FROM .* AS $bin\$" $REPO_ROOT/docker/Dockerfile && BINS="$BINS $bin"
 done
-echo $BINS | jq -R 'split(" ") | [.[] | select(length>0) | {bin: .}]'
+echo $BINS | jq -Rc 'split(" ") | [.[] | select(length>0) | {bin: .}]'
