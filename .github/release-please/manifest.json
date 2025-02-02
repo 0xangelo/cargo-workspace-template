@@ -1,1 +1,5 @@
-{"crates/hello-world":"0.1.21","crates/goodbye-world":"0.1.10"}
+{
+  "crates/hello-world":"0.1.21",
+  "crates/goodbye-world":"0.1.10",
+  "crates/print-this":"0.0.0"
+}
