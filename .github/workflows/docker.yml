@@ -56,6 +56,8 @@ jobs:
           MY_SECRET: ${{ secrets.HELLO_WORLD_SECRET }}
         uses: docker/build-push-action@v6
         with:
+          build-args: |-
+            BIN=${{ matrix.bin }}
           # https://www.blacksmith.sh/blog/cache-is-king-a-guide-for-docker-layer-caching-in-github-actions
           cache-from: |-
             type=registry,ref=ghcr.io/0xangelo/${{ matrix.bin }}:buildcache
