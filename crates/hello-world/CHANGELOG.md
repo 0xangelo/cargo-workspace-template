@@ -1,5 +1,7 @@
 # Changelog
 
+
+
 ## [0.1.22](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.21...hello-world-v0.1.22) (2025-02-02)
 
 
