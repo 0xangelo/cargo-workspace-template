@@ -1,6 +1,6 @@
 [package]
 edition = "2021"
 name    = "goodbye-world"
-version = "0.1.9"
+version = "0.1.10"
 
 [dependencies]
