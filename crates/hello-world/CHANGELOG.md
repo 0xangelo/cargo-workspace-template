@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.15](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.14...hello-world-v0.1.15) (2025-02-02)
+
+
+### Features
+
+* bump version patch ([c8bab12](https://github.com/0xangelo/cargo-workspace-template/commit/c8bab121d95f8e2fe6c0fdb2314d53b3dec5eaab))
+
 ## [0.1.14](https://github.com/0xangelo/cargo-workspace-template/compare/hello-world-v0.1.13...hello-world-v0.1.14) (2025-01-22)
 
 
