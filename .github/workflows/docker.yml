@@ -75,6 +75,6 @@ jobs:
           secret-envs: |
             MY_SECRET=MY_SECRET
           tags: |
-            0xangelo/${{ matrix.target }}:${{ needs.pkg-info.outputs.version }}
-            0xangelo/${{ matrix.target }}:latest
+            ghcr.io/0xangelo/${{ matrix.target }}:${{ needs.pkg-info.outputs.version }}
+            ghcr.io/0xangelo/${{ matrix.target }}:latest
           target: ${{ matrix.bin }}
