@@ -83,9 +83,8 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - name: Unit tests
         run: cargo nextest run --no-tests=warn --all-features --all-targets
-      # NOTE: re-enable once there are libraries in the workspace
-      # - name: Doc tests
-      #   run: cargo test --doc
+      - name: Doc tests
+        run: cargo test --doc
 
   docs:
     needs: changes
