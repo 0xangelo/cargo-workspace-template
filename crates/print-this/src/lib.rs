@@ -2,6 +2,7 @@
 
 use std::fmt::Display;
 
+/// Transform to string.
 pub fn to_string(this: impl Display) -> String {
     format!("{this}")
 }
