@@ -82,7 +82,7 @@ jobs:
           tool: nextest
       - uses: Swatinem/rust-cache@v2
       - name: Unit tests
-        run: cargo nextest run --no-tests=warn --all-features --bins --lib
+        run: cargo nextest run --no-tests=warn --all-features --all-targets
       - name: Doc tests
         run: cargo test --doc
 
