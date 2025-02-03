@@ -19,8 +19,8 @@ COPY --from=planner /build/recipe.json recipe.json
 RUN cargo chef cook --no-default-features --release --recipe-path recipe.json --bin $BIN
 
 # Build application
-COPY . .
-RUN cargo build --release --bin $BIN
+COPY crates crates
+RUN cargo build --offline --release --bin $BIN
 
 RUN mv target/release/$BIN service
 
